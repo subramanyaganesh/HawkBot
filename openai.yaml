@@ -1,0 +1,22 @@
+llm:
+  provider: openai
+  model: gpt-35-turbo
+  config:
+    temperature: 0.5
+    max_tokens: 3500
+    top_p: 1
+    stream: false
+    template: |
+      Be as elaborative as possible. Do not give incomplete answers. Your answers need to be complete. 
+
+      $context
+      
+      Query: $query
+      
+      Helpful Answer:
+
+embedding_model:
+  provider: openai
+  config:
+    model: text-embedding-ada-002
+    deployment_name: ec_embeddings_ada_002
