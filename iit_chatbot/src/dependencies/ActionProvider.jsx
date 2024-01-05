@@ -21,7 +21,6 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       greet("Loading" );    // I am using message object, you can use string too
       const apiResp = await axios.post("http://localhost:8000/api/getAnswer/",data);//"https://random-word-api.herokuapp.com/word"
       if (apiResp.status == 200) {
-        console.log(apiResp?.data.answer);
         greet(apiResp?.data.answer, true);    // Sending true as second parameter as  i need to stop loading that chat object response once API call is finished. Will discuss it further in next steps
       } else {
         greet('FAIL_TO_ANSWER',true);

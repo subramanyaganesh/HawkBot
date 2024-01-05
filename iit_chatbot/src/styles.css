@@ -45,7 +45,8 @@
 .chatbot-bot-message{
     background-color: #EEE;
     padding: 10px;
-    border-radius: 70.4px 70.4px 70.4px 0px;
+    padding-bottom: 15px;
+    border-radius: 0px 70.4px 70.4px 30.4px;
     font-size: 0.9rem;
     color: #505050;
     font-style: normal;
