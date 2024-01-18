@@ -22,7 +22,9 @@ class Core:
       #   if question in ['q', 'exit', 'quit']:
       #     break
 
-      answer = hawk_bot.query(question)
-      print(answer)
-      return answer
-
+      answer, sources =hawk_bot.query(question, citations=True)   
+      firstValue = set(t[1] for t in sources)
+      ans='\n'
+      for i,element in enumerate(firstValue):
+        ans = ans + f"Source {i+1} :{element}\n"
+      return answer+ans
