@@ -11,9 +11,12 @@ class Core:
       hawk_bot = App.from_config(config_path=configPath)
 
       hawk_bot.add("https://www.iit.edu/coursera")
+      hawk_bot.add("https://iit.libcal.com/hours/")
       hawk_bot.add("https://www.iit.edu/sites/default/files/2023-11/Coursera-Guide-to-Registration_v4.pdf", data_type='pdf_file')
       hawk_bot.add("https://www.iit.edu/coursera/coursera-faqs")
       hawk_bot.add("https://www.iit.edu/coursera/course-offerings")
       hawk_bot.add("https://www.iit.edu/coursera/coursera-academic-calendar")
+
+      print(f'This is the test------------{hawk_bot.get_data_sources()}')
 
       return hawk_bot.serialize()
