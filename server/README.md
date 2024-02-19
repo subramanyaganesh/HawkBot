@@ -10,9 +10,14 @@ How this project was created
             ]
 
 Do the following to setup the server
+Installations
 
     1. pip install embedchain
     2. pip install django djangorestframework
+    3. pip install django-environ
+    4. pip install django-cors-headers
+
+Execution
     3. python manage.py makemigrations
     4. python manage.py migrate
     5. python manage.py runserver
@@ -37,3 +42,11 @@ Look into the dir part
 
 
 Note always use a id with the App instance so that the db does not get updated with every request
+
+
+
+Location of deployment::::ssh -l sganesh10 192.168.147.35
+ XWjJVJsJdXhH
+
+
+ run application ::nohup python3 manage.py runserver 192.168.147.35:8000 & 
