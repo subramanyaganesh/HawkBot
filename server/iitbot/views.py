@@ -25,9 +25,9 @@ def get_json_response(request):
     answer,sources =hawk_bot.query(question, citations=True)
 
 
-    print('the answer is ', answer)
-    print('=====================')
-    print('the sources are ', sources)
+    # print('the answer is ', answer)
+    # print('=====================')
+    # print('the sources are ', sources)
     
     
     response_data = {'question': question, 'answer': answer, 'sources': str(sources)}

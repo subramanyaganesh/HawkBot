@@ -7,7 +7,7 @@ class Core:
     def core():
       os.environ["OPENAI_API_KEY"] =  settings.OPENAI_KEY
       configPath = os.path.join(os.path.dirname(__file__), "openai.yaml")
-      print(configPath)
+      # print(configPath)
       hawk_bot = App.from_config(config_path=configPath)
 
       hawk_bot.add("https://www.iit.edu/coursera")
@@ -17,6 +17,6 @@ class Core:
       hawk_bot.add("https://www.iit.edu/coursera/course-offerings")
       hawk_bot.add("https://www.iit.edu/coursera/coursera-academic-calendar")
 
-      print(f'This is the test------------{hawk_bot.get_data_sources()}')
+      # print(f'This is the test------------{hawk_bot.get_data_sources()}')
 
       return hawk_bot.serialize()
