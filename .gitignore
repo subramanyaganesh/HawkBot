@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-/server/db/*
+server/db/*
+server/server/__pycache__/*
+server/iitbot/__pycache__/*
 
 # testing
 /coverage
