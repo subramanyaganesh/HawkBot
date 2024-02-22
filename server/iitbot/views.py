@@ -28,7 +28,10 @@ def get_json_response(request):
     unique_elements = set()
     for source in sources:
         if len(source) >= 1 and source[1] and source[1] != "None" and source[1] != "null":
-            unique_elements.add(source[1])
+            if isinstance(source, dict) and 1 in source:
+                unique_elements.add(tuple(source.items()))
+            else :
+                unique_elements.add(source[1])
 
    
     
