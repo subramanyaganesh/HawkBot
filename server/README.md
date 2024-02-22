@@ -6,7 +6,7 @@ How this project was created
             INSTALLED_APPS = [
             # ...
             'rest_framework',
-            'app_name',  # Add your app here
+            'iit-hawkbot',  
             ]
 
 Do the following to setup the server
@@ -49,4 +49,11 @@ Location of deployment::::ssh -l sganesh10 192.168.147.35
  XWjJVJsJdXhH
 
 
- run application ::nohup python3 manage.py runserver 192.168.147.35:8000 & 
+ run application ::
+nohup python3 manage.py runserver 192.168.147.35:8000 & 
+
+kill -9 `ps -ef|grep runserver|grep -v grep|awk {'print $2'}`
+
+
+
+868ms. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}

@@ -17,6 +17,16 @@ class Core:
       hawk_bot.add("https://www.iit.edu/coursera/course-offerings")
       hawk_bot.add("https://www.iit.edu/coursera/coursera-academic-calendar")
 
+      hawk_bot.add("https://ots.iit.edu/printing/student-guest-printers")
+
+      hawk_bot.add("https://www.iit.edu/housing/housing-options/residence-halls")
+
+      hawk_bot.add("https://www.iit.edu/housing/housing-options/housing-rates")
+
+  
+
+      hawk_bot.add("https://bulletin.iit.edu/graduate/colleges/engineering/ece/master-engineering-artificial-intelligence-computer-vision-control")
+
       # print(f'This is the test------------{hawk_bot.get_data_sources()}')
 
       return hawk_bot.serialize()

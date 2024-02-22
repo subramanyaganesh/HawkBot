@@ -7,6 +7,7 @@ from .serializers import JsonResponseSerializer
 from embedchain import Pipeline as App
 import os
 from django.conf import settings
+import json
 
 Core.core()
 @api_view(['POST'])
@@ -23,14 +24,10 @@ def get_json_response(request):
     os.environ["OPENAI_API_KEY"] = settings.OPENAI_KEY
     hawk_bot = App.from_config(config_path=os.path.join(os.path.dirname(__file__), "openai.yaml"))
     answer,sources =hawk_bot.query(question, citations=True)
-
-
-    # print('the answer is ', answer)
-    # print('=====================')
-    # print('the sources are ', sources)
     
+    unique_elements = {source[1] for source in sources}
     
-    response_data = {'question': question, 'answer': answer, 'sources': str(sources)}
+    response_data = {'question': question, 'answer': answer, 'sources':unique_elements}
 
     # Return the JSON response
     serializer = JsonResponseSerializer(response_data)
