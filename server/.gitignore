@@ -1,3 +1,4 @@
 /server/db/*
 .env
-
+server/server/__pycache__
+server/iitbot/__pycache__
