@@ -26,12 +26,13 @@ def get_json_response(request):
     answer,sources =hawk_bot.query(question, citations=True)
     
     unique_elements = set()
+
+    print(sources)
     for source in sources:
-        if len(source) >= 1 and source[1] and source[1] != "None" and source[1] != "null":
-            if isinstance(source, dict) and 1 in source:
-                unique_elements.add(tuple(source.items()))
-            else :
-                unique_elements.add(source[1])
+        if isinstance(source, dict):
+            unique_elements.add(str(source['url']))
+        else:
+            unique_elements.add(str(source[1]))
 
    
     
