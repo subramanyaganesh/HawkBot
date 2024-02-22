@@ -2,3 +2,5 @@
 server/db/*
 server/server/__pycache__/*
 server/iitbot/__pycache__/*
+server/db/chroma.sqlite3
+
