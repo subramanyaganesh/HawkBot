@@ -25,7 +25,12 @@ def get_json_response(request):
     hawk_bot = App.from_config(config_path=os.path.join(os.path.dirname(__file__), "openai.yaml"))
     answer,sources =hawk_bot.query(question, citations=True)
     
-    unique_elements = {source[1] for source in sources if len(source) > 1 and source[1]}
+    unique_elements = set()
+    for source in sources:
+        if len(source) >= 1 and source[1] and source[1] != "None" and source[1] != "null":
+            unique_elements.add(source[1])
+
+   
     
     response_data = {'question': question, 'answer': answer, 'sources':unique_elements}
 
