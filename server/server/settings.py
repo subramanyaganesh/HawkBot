@@ -33,10 +33,16 @@ SECRET_KEY = 'django-insecure-(khxvzl8-j&^3*lrmfabb%do93q$tj-3*9t)&_upg^(%92d)c4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CORS_ORIGIN_ALLOW_ALL = True #new
+
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Add the origins (URLs) you want to allow
+    'http://localhost:3000', # new
+    'https://hawkbot-tenant.iit.edu:8000', # new
+    'http://*', # new
+    'https://*', # new
+
 ]
 # Application definition
 
@@ -50,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework', # new
     'iitbot', # new
     'corsheaders', # new
+    'sslserver', # new
 ]
 
 MIDDLEWARE = [
