@@ -36,7 +36,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
-    "*",  # Add the origins (URLs) you want to allow
+    'http://*', # new
+    'https://*', # new
 ]
 # Application definition
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework', # new
     'iitbot', # new
     'corsheaders', # new
+    'sslserver', # new
 ]
 
 MIDDLEWARE = [

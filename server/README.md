@@ -52,8 +52,14 @@ Location of deployment::::ssh -l sganesh10 192.168.147.35
  run application ::
 nohup python3 manage.py runserver 192.168.147.35:8000 & 
 
-kill -9 `ps -ef|grep runserver|grep -v grep|awk {'print $2'}`
+nohup python3 manage.py runsslserver --cert /root/ssl/2024-april/wildcard.crt --key /localHawkBot/HawkBot/server/cert/hawkbot.key 192.168.147.35:8000 &
 
+
+python3 manage.py runsslserver --cert /root/ssl/2024-april/wildcard.crt --key /localHawkBot/HawkBot/server/cert/hawkbot.key 192.168.147.35:8000
+
+
+kill -9 `ps -ef|grep runserver|grep -v grep|awk {'print $2'}`
+kill -9 `ps -ef|grep runsslserver|grep -v grep|awk {'print $2'}`
 
 
 868ms. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
