@@ -10,11 +10,7 @@ const config = {
   initialMessages: [
     createChatBotMessage({
       answer: `Hello! I'm ${botName}, your personal assistant`,
-      sources: [
-        "https://www.google.com/",
-        "https://www.bing.com/",
-        "https://www.iit.edu/registrar/academic-calendar",
-      ],
+      sources: [],
     }),
   ],
   botName: botName,

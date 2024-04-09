@@ -4,17 +4,14 @@ import axios from "axios";
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   // const api = "http://localhost:8000/api/getAnswer/";
-  const api = "http://192.168.147.35:8000/api/getAnswer/";
+  // const api = "https://192.168.147.35:8000/api/getAnswer/";
+  const api = "https://hawkbot-tenant.iit.edu:8000/api/getAnswer/";
 
   const handleHello = () => {
     const botMessage = createChatBotMessage(
       {
-        answer: "Hello. Nice to meet you.",
-        sources: [
-          "https://www.google.com/",
-          "https://www.bing.com/",
-          "https://www.iit.edu/registrar/academic-calendar",
-        ],
+        answer: "Hello. how can I help you today?.",
+        sources: [],
       },
       {
         delay: 1000,
@@ -27,27 +24,52 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
+  let apiCallQueue = Promise.resolve();
+
   const clientMessage = async (clientMessage) => {
-    addMessageToState(clientMessage);
-    const data = clientMessage;
-    try {
-      greet({ answer: "Loading", sources: [] });
-      const apiResp = await axios.post(api, data); //"https://random-word-api.herokuapp.com/word"
-      if (apiResp.status === 200) {
-        greet(apiResp?.data, true); // Sending true as second parameter as  i need to stop loading that chat object response once API call is finished. Will discuss it further in next steps
-      } else {
+    const currentCall = async () => {
+      try {
+        addMessageToState(clientMessage);
+        const data = clientMessage;
+        greet({ answer: "Loading", sources: [] });
+        const apiResp = await axios.post(api, data);
+
+        if (apiResp.status === 200) {
+          greet(apiResp.data, true);
+        } else {
+          greet({ answer: "Fetch Failed", sources: [] }, true);
+        }
+      } catch (error) {
         greet({ answer: "Fetch Failed", sources: [] }, true);
       }
-    } catch {
-      greet({ answer: "Fetch Failed", sources: [] }, true);
-    }
+    };
+    apiCallQueue = apiCallQueue.then(currentCall).catch(console.error);
   };
+
+  // const clientMessage = async (clientMessage) => {
+  //   addMessageToState(clientMessage);
+  //   const data = clientMessage;
+  //   try {
+  //     greet({ answer: "Loading", sources: [] });
+  //     const apiResp = await axios.post(api, data);
+  //     if (apiResp.status === 200) {
+  //       greet(apiResp?.data, true);
+  //     } else {
+  //       greet({ answer: "Fetch Failed", sources: [] }, true);
+  //     }
+  //   } catch {
+  //     greet({ answer: "Fetch Failed", sources: [] }, true);
+  //   }
+  // };
 
   const removeLoadingMessage = (prevstateArray, removeLoading) => {
     if (removeLoading) {
       prevstateArray?.messages?.splice(
         prevstateArray?.messages?.findIndex(
-          (a) => a?.message?.message === "Loading"
+          // (a) => a?.message?.message.answer === "Loading"
+          (a) => {
+            return a?.message?.answer === "Loading";
+          }
         ),
         1
       );

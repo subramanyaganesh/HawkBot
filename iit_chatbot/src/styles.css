@@ -114,11 +114,9 @@ body {
   box-shadow: 14.08px 11.264px 56.32px 0px rgba(0, 0, 0, 0.13);
 }
 
-/* @media only screen and (max-width: 767px) {
-  .chatbot-container {
-    display: none;
-  }
-} */
+.text-disable {
+  cursor: not-allowed;
+}
 
 @media only screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .chatbot-container {

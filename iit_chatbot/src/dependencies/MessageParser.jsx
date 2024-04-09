@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const MessageParser = ({ children, actions }) => {
   const parse = (message) => {
-    if (message.includes('hello')) {
+    if (message.includes("hello")) {
       actions.handleHello();
-    }else{
-        actions.clientMessage(message);
+    } else {
+      actions.clientMessage(message);
     }
   };
 

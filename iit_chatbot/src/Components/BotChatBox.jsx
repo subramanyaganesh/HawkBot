@@ -2,7 +2,6 @@ import React from "react";
 import { Bars } from "react-loader-spinner";
 
 export default function BotChatBox(props) {
-  console.log(props.message);
   return (
     <div>
       <div className="chatbot-bot-message">
@@ -20,16 +19,21 @@ export default function BotChatBox(props) {
           props.message.answer
         )}
       </div>
-      {props.message.sources.map((source) => {
+      {props.message.sources.map((source, idx) => {
         return (
-          <>
+          <div key={idx}>
             <div className="spacing-sources"></div>
             <p className="source-para">
-              <a className="para-link" href={source}>
+              <a
+                className="para-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={source}
+              >
                 {source.slice(0, 40) + "..."}
               </a>
             </p>
-          </>
+          </div>
         );
       })}
     </div>
