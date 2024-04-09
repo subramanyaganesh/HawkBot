@@ -50,6 +50,9 @@ Location of deployment::::ssh -l sganesh10 192.168.147.35
 
 
  run application ::
+
+cp /root/ssl/2024-april/wildcard.crt  /localHawkBot/HawkBot/server/cert/hawkbot.crt
+
 nohup python3 manage.py runserver 192.168.147.35:8000 & 
 
 nohup python3 manage.py runsslserver --cert /root/ssl/2024-april/wildcard.crt --key /localHawkBot/HawkBot/server/cert/hawkbot.key 192.168.147.35:8000 &

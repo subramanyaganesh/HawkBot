@@ -33,11 +33,16 @@ SECRET_KEY = 'django-insecure-(khxvzl8-j&^3*lrmfabb%do93q$tj-3*9t)&_upg^(%92d)c4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000', # new
+    'https://hawkbot-tenant.iit.edu:8000'
     'http://*', # new
     'https://*', # new
+
 ]
 # Application definition
 
