@@ -39,7 +39,7 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000', # new
-    'https://hawkbot-tenant.iit.edu:8000'
+    'https://hawkbot-tenant.iit.edu:8000', # new
     'http://*', # new
     'https://*', # new
 
