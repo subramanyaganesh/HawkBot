@@ -23,9 +23,28 @@ def get_json_response(request):
 
     os.environ["OPENAI_API_KEY"] = settings.OPENAI_KEY
     hawk_bot = App.from_config(config_path=os.path.join(os.path.dirname(__file__), "openai.yaml"))
-    answer,sources =hawk_bot.query(question, citations=True)
+    
+    creator_questions = [
+    "who created you",
+    "who are your creators",
+    "who is your creator",
+    "who created you?",
+    "who are your creators?",
+    "who is your creator?"
+    ]
+    
+    if question.lower().strip() in creator_questions:
+        answer, sources = "I was created by Illinois Tech students Subramanya Ganesh, Darshan Sasidharan and Nitin Murali", [(
+    {'url': 'https://www.linkedin.com/in/nitin-murali/', 'score': 1},
+    {'url': 'https://www.linkedin.com/in/subramanyaganesh/', 'score': 1},
+    {'url': 'https://www.linkedin.com/in/dsn7/', 'score': 1},
+    )
+]
+    else :
+        answer,sources =hawk_bot.query(question, citations=True)
     
     unique_elements = {element['url'] for source in sources for element in source if isinstance(element, dict) and element.get('score', 0) > 0}
+
     
     response_data = {'question': question, 'answer': answer, 'sources':unique_elements}
 
