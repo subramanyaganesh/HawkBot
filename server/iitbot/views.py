@@ -32,13 +32,15 @@ def get_json_response(request):
     "who are your creators?",
     "who is your creator?"
     ]
-    
+    check=False
     if question.lower().strip() in creator_questions:
+        check=True
         answer, sources = "I was created by Illinois Tech students Subramanya Ganesh, Darshan Sasidharan and Nitin Murali", [(
     {'url': 'https://www.linkedin.com/in/nitin-murali/', 'score': 1},
     {'url': 'https://www.linkedin.com/in/subramanyaganesh/', 'score': 1},
     {'url': 'https://www.linkedin.com/in/dsn7/', 'score': 1},
     )
+
 ]
     else :
         answer,sources =hawk_bot.query(question, citations=True)
@@ -46,7 +48,7 @@ def get_json_response(request):
     unique_elements = {element['url'] for source in sources for element in source if isinstance(element, dict) and element.get('score', 0) > 0}
 
     
-    response_data = {'question': question, 'answer': answer, 'sources':unique_elements}
+    response_data = {'question': question, 'answer': answer, 'sources':unique_elements, 'flag':check}
 
     # Return the JSON response
     serializer = JsonResponseSerializer(response_data)
