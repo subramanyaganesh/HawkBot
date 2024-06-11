@@ -16,6 +16,7 @@ class Core:
       hawk_bot.add("https://www.iit.edu/coursera/coursera-faqs")
       hawk_bot.add("https://www.iit.edu/coursera/course-offerings")
       hawk_bot.add("https://www.iit.edu/coursera/coursera-academic-calendar")
+      hawk_bot.add("https://www.iit.edu/coursera/mba-pba")
 
       #hawk_bot.add("https://ots.iit.edu/printing/student-guest-printers")
 
