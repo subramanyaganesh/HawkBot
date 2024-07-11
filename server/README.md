@@ -16,6 +16,7 @@ Installations
     2. pip install django djangorestframework
     3. pip install django-environ
     4. pip install django-cors-headers
+    
 
 Execution
     3. python manage.py makemigrations
