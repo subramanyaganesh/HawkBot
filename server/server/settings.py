@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'rest_framework', # new
     'iitbot', # new
     'corsheaders', # new
-    'sslserver', # new
+    # 'sslserver', # new
 ]
 
 MIDDLEWARE = [
