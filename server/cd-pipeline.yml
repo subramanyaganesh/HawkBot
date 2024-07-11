@@ -1,0 +1,49 @@
+version: 0.0
+os: linux
+files:
+  - source: /HawkBot/server/
+hooks:
+  BeforeInstall:
+    - location: /bin/bash
+      timeout: 300
+      runas: root
+      inline: |
+        # Update and install dependencies using yum
+        yum update -y
+        yum install -y python3 python3-venv python3-pip
+
+        # Navigate to the server directory
+        cd /var/www/html/HawkBot/server/
+
+        # Set up virtual environment and install requirements
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install embedchain
+        pip install django djangorestframework
+        pip install django-environ
+        pip install django-cors-headers
+  ApplicationStart:
+    - location: /bin/bash
+      timeout: 300
+      runas: root
+      inline: |
+        # Navigate to the server directory and activate the virtual environment
+        cd /var/www/html/HawkBot/server/
+        source venv/bin/activate
+
+        # Run Django management commands
+        python manage.py makemigrations
+        python manage.py migrate
+
+        # Start the Django development server
+        python manage.py runserver 0.0.0.0:8000
+  ApplicationStop:
+    - location: /bin/bash
+      timeout: 300
+      runas: root
+      inline: |
+        # Find the PID of the Django server and terminate it
+        PID=$(ps aux | grep 'manage.py runserver' | grep -v grep | awk '{print $2}')
+        if [ -n "$PID" ]; then
+          kill -9 $PID
+        fi
