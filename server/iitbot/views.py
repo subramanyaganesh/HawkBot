@@ -22,7 +22,7 @@ def get_json_response(request):
         return Response({'error': 'Question not provided in the request body'}, status=status.HTTP_400_BAD_REQUEST)
 
     os.environ["OPENAI_API_KEY"] = settings.OPENAI_KEY
-    hawk_bot = App.from_config(config_path=os.path.join(os.path.dirname(__file__), "openai.yaml"))
+    stanford_bot = App.from_config(config_path=os.path.join(os.path.dirname(__file__), "openai.yaml"))
     
     creator_questions = [
     "who created you",
@@ -35,15 +35,14 @@ def get_json_response(request):
     check=False
     if question.lower().strip() in creator_questions:
         check=True
-        answer, sources = "I was created by Illinois Tech students Subramanya Ganesh, Darshan Sasidharan and Nitin Murali", [(
-    {'url': 'https://www.linkedin.com/in/nitin-murali/', 'score': 1},
+        answer, sources = "I was created by Subramanya Ganesh ", [(
     {'url': 'https://www.linkedin.com/in/subramanyaganesh/', 'score': 1},
-    {'url': 'https://www.linkedin.com/in/dsn7/', 'score': 1},
+
     )
 
 ]
     else :
-        answer,sources =hawk_bot.query(question, citations=True)
+        answer,sources =stanford_bot.query(question, citations=True)
     
     unique_elements = {element['url'] for source in sources for element in source if isinstance(element, dict) and element.get('score', 0) > 0}
 
@@ -57,6 +56,6 @@ def get_json_response(request):
 
 
 # if not dynamic_instance:
-#         dynamic_instance = DynamicModel(data={'hawk_bot': Core.core()})
+#         dynamic_instance = DynamicModel(data={'stanford_bot': Core.core()})
 #         dynamic_instance.save()
 # dynamic_instance = DynamicModel.objects.first()

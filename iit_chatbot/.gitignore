@@ -4,12 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-server/db/*
-server/server/__pycache__/*
-server/iitbot/__pycache__/*
-server/db/chroma.sqlite3
-venv/
-server/iitbot/management/__pycache__/
+
 # testing
 /coverage
 
@@ -18,7 +13,7 @@ server/iitbot/management/__pycache__/
 
 # misc
 .DS_Store
-.env
+.env.local
 .env.development.local
 .env.test.local
 .env.production.local

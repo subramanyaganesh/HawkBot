@@ -37,13 +37,12 @@ CORS_ORIGIN_ALLOW_ALL = True #new
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000', # new
-    'https://hawkbot-tenant.iit.edu:8000', # new
-    'http://*', # new
-    'https://*', # new
-
-]
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000', # new
+#     'http://*', # new
+#     'https://*', # new
+# ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,7 +55,7 @@ INSTALLED_APPS = [
     'rest_framework', # new
     'iitbot', # new
     'corsheaders', # new
-    'sslserver', # new
+    # 'sslserver', # new
 ]
 
 MIDDLEWARE = [
