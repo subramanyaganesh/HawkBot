@@ -17,6 +17,8 @@ Installations
     3. pip install django-environ
     4. pip install django-cors-headers
 
+    pip install django djangorestframework django-environ django-cors-headers embedchain
+
 Execution
     3. python manage.py makemigrations
     4. python manage.py migrate
@@ -57,6 +59,8 @@ nohup python3 manage.py runserver 192.168.147.35:8000 &
 
 nohup python3 manage.py runsslserver --cert /root/ssl/2024-april/wildcard.crt --key /localHawkBot/HawkBot/server/cert/hawkbot.key 0.0.0.0:8000 &
 
+
+nohup python manage.py runserver 0.0.0.0:8000 &
 
 kill -9 `ps -ef|grep runserver|grep -v grep|awk {'print $2'}`
 kill -9 `ps -ef|grep runsslserver|grep -v grep|awk {'print $2'}`
