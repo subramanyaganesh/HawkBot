@@ -2,9 +2,10 @@ app:
   config:
     id: stanfordBot1
 llm:
-  provider: openai
+  provider: azure_openai
   config:
-    model: 'gpt-3.5-turbo'
+    model: gpt-4o-mini
+    deployment_name: gpt-4o-mini
     temperature: 0.5
     # max_tokens: 3500
     top_p: 1
@@ -19,7 +20,7 @@ llm:
       Helpful Answer:
 
 embedding_model:
-  provider: openai
+  provider: azure_openai
   config:
     model: text-embedding-ada-002
-    # deployment_name: ec_embeddings_ada_002
+    

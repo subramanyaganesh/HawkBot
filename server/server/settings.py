@@ -18,7 +18,10 @@ env = environ.Env()
 # Read from .env file
 environ.Env.read_env()
 
-OPENAI_KEY = env('OPENAI_KEY')
+AZURE_OPENAI_ENDPOINT=env('AZURE_OPENAI_ENDPOINT')
+AZURE_OPENAI_API_KEY=env('AZURE_OPENAI_API_KEY')
+OPENAI_API_VERSION=env('OPENAI_API_VERSION')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
